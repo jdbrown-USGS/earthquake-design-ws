@@ -325,9 +325,7 @@ var WebService = function (options) {
     app.get(_mountPath + '/:method', _this.get);
 
     // rest fall through to htdocs as static content.
-    // TODO: Make it so the mount point alone can resolve the Version and Revision variables
-    // TODO: Remove late.  Hello World
-    app.get(_mountPath + '/index.html', function(req, res){
+    app.get([_mountPath, _mountPath + '/index.html'], function(req, res){
       fs.readFile('src/htdocs/index.html', 'utf8', function(err, data){
         res.send(data
             .replace('{{VERSION}}', _versionInfo)
