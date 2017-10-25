@@ -3,7 +3,6 @@
 
 const DesignCategoryFactory = require('./design-category-factory'),
     extend = require('extend'),
-    MetadataFactory = require('./metadata-factory'),
     NumberUtils = require('./util/number-utils').instance,
     SiteAmplificationFactory = require('./site-amplification-factory'),
     SpectraFactory = require('./spectra-factory'),
@@ -55,7 +54,8 @@ const ASCE7_Handler = function (options) {
           {url: options.RISK_COEFFICIENT_SERVICE_URL}),
         deterministicService: WebServiceAccessor(
           {url: options.DETERMINISTIC_SERVICE_URL}),
-        metadataFactory: MetadataFactory(),
+        metadataService: WebServiceAccessor(
+          {url: options.METADATA_SERVICE_URL}),
         tSubLService: WebServiceAccessor(
           {url: options.TSUBL_SERVICE_URL}),
         siteAmplificationFactory: SiteAmplificationFactory(),
