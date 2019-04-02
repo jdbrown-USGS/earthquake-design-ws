@@ -6,7 +6,9 @@ CREATE TABLE region (
   max_longitude NUMERIC NOT NULL,
   min_latitude NUMERIC NOT NULL,
   min_longitude NUMERIC NOT NULL,
-  name VARCHAR(255) NOT NULL UNIQUE
+  name VARCHAR(255) NOT NULL UNIQUE,
+  periods NUMERIC ARRAY DEFAULT NULL,
+  vs30 NUMERIC DEFAULT NULL
 );
 
 CREATE TABLE data (
@@ -15,8 +17,7 @@ CREATE TABLE data (
 
   latitude NUMERIC NOT NULL,
   longitude NUMERIC NOT NULL,
-  cr1 NUMERIC DEFAULT NULL,
-  crs NUMERIC DEFAULT NULL,
+  cr NUMERIC ARRAY DEFAULT NULL,
   UNIQUE (region_id, latitude, longitude)
 );
 
